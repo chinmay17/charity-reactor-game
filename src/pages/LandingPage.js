@@ -23,6 +23,9 @@ const styles = theme => ({
     textAlign: 'center',
     paddingTop: theme.spacing.unit * 20,
   },
+  errorMessage: {
+    color: theme.palette.error.dark,
+  }
 });
 
 class LandingPage extends React.PureComponent {
@@ -104,17 +107,20 @@ class LandingPage extends React.PureComponent {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={cx(classes.root, this.props.className)}>
         {this.renderTermsAndConditions()}
         <Typography variant="h4" gutterBottom>
           10 Player Reactor for X'mas@Sprinklr!
         </Typography>
         <Typography variant="subtitle1" gutterBottom>
-          Entry fee ₹100
+          Entry fee ₹100 per game
         </Typography>
         <Typography variant="subtitle1" gutterBottom>
-          Prize money ₹500
+          Prize money ₹500 per win
         </Typography>
+        {this.state.errorMessage && <Typography className={classes.errorMessage} variant="h6" gutterBottom>
+          {this.state.errorMessage}
+        </Typography>}
         {!this.state.isLoggedIn && <div className="center-x">
           <div
             className={cx('g-signin2', { invisible: this.state.hideLoginButton })}

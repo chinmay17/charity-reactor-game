@@ -3,15 +3,8 @@ import cx from 'classnames';
 import LandingPage from './LandingPage';
 import Race from './Race';
 import withRoot from '../withRoot';
-import {withStyles} from '@material-ui/core/styles';
 
 import './App.css';
-
-const styles = theme => ({
-  root: {
-    padding: theme.spacing.unit * 5,
-  },
-});
 
 class Index extends React.PureComponent {
 
@@ -26,12 +19,14 @@ class Index extends React.PureComponent {
   };
 
   render() {
+    const className = cx('full-height');
+
     return (
-      <div className={cx(this.props.classes.root, 'full-height')}>
-        {this.state.shouldRenderRace ? <Race/> : <LandingPage onSubmit={this.handleLandingPageSubmit}/>}
-      </div>
+      this.state.shouldRenderRace ?
+        <Race className={className}/> :
+        <LandingPage className={className} onSubmit={this.handleLandingPageSubmit}/>
     );
   }
 }
 
-export default withRoot(withStyles(styles)(Index));
+export default withRoot(Index);

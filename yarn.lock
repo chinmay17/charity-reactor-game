@@ -7064,6 +7064,10 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
+react-powerhooks@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-powerhooks/-/react-powerhooks-0.0.7.tgz#542a61dfdc17db95df19f5344970c2707002d360"
+
 react-scripts@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-2.1.1.tgz#c2959a756b0b61d3090adece0d7aedd324dff8a5"

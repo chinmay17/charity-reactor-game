@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -21,7 +22,7 @@ function Participants(props) {
   const { classes } = props;
 
   return (
-    <List dense className={classes.root}>
+    <List dense className={cx(classes.root, props.className)}>
       {props.participants.map(({ name, imgUrl }) => (
         <ListItem key={name}>
           <ListItemAvatar>
