@@ -1,0 +1,28 @@
+#root{
+    height: 100vh;
+    width: 100vw;
+}
+
+.full-height{
+    height: 100%;
+}
+
+.pos-r{
+    position: relative;
+}
+
+.loginButton {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.invisible{
+    opacity: 0;
+}
+
+.center-x{
+    display: flex;
+    justify-content: center;
+}
