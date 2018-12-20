@@ -10,11 +10,13 @@ class Index extends React.PureComponent {
 
   state = {
     shouldRenderRace: false,
+    gameResponse: null,
   };
 
-  handleLandingPageSubmit = () => {
+  handleLandingPageSubmit = (gameResponse) => {
     this.setState({
       shouldRenderRace: true,
+      gameResponse,
     });
   };
 
@@ -23,7 +25,7 @@ class Index extends React.PureComponent {
 
     return (
       this.state.shouldRenderRace ?
-        <Race className={className}/> :
+        <Race gameResponse={this.state.gameResponse} className={className}/> :
         <LandingPage className={className} onSubmit={this.handleLandingPageSubmit}/>
     );
   }

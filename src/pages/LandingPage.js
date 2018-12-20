@@ -75,13 +75,13 @@ class LandingPage extends React.PureComponent {
       isSubmitting: true,
     });
     registerForGame()
-      .then(() => {
+      .then((response) => {
         console.log(window.__ENV__);
         this.setState({
           dialogOpen: false,
           isSubmitting: false,
         });
-        this.props.onSubmit();
+        this.props.onSubmit(response);
       });
   };
 

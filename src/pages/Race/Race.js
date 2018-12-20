@@ -6,6 +6,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 import Waiting from './components/Waiting';
 import Ready from './components/Ready';
+import Quiz from './components/Quiz';
 
 import Participants from './components/Participants';
 import Footer from './components/Footer';
@@ -22,6 +23,7 @@ const RACE_STATES = {
 const RACE_STATE_TO_COMPONENT = {
   [RACE_STATES.WAITING.value]: Waiting,
   [RACE_STATES.READY.value]: Ready,
+  [RACE_STATES.IN_PROGRESS.value]: Quiz,
 };
 
 const styles = theme => ({
@@ -111,6 +113,7 @@ class Race extends PureComponent {
         <div className="pos-r full-height">
           <div className={cx(this.props.classes.component, 'center-x')}>
             <Component
+              gameResponse={props.gameResponse}
               onCompletion={this.handleCurrentStateCompletion}
               onParticipantsUpdate={this.handleParticipantsUpdate}
             />
@@ -127,7 +130,9 @@ class Race extends PureComponent {
 }
 
 Race.displayName = 'Race';
-Race.propTypes = {};
+Race.propTypes = {
+  gameResponse: PropTypes.any,
+};
 Race.defaultProps = {};
 
 export default withStyles(styles)(Race);

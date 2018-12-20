@@ -1,9 +1,92 @@
 import axios from 'axios';
 
+const QUESTIONS = [
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'black',
+      textColor: '#00d2f9',
+    },
+    answer: 'F',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'red',
+      textColor: 'red',
+    },
+    answer: 'T',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'blue',
+      textColor: 'pink',
+    },
+    answer: 'F',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'maroon',
+      textColor: '#BBDEFB',
+    },
+    answer: 'F',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'pink',
+      textColor: '#F06292',
+    },
+    answer: 'T',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'purple',
+      textColor: '#9C27B0',
+    },
+    answer: 'T',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'teal',
+      textColor: '#009688',
+    },
+    answer: 'T',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'green',
+      textColor: '#9E9E9E',
+    },
+    answer: 'F',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'brown',
+      textColor: '#795548',
+    },
+    answer: 'T',
+  },
+  {
+    type: 'COLOR_TO_COLOR_NAME',
+    data: {
+      text: 'orange',
+      textColor: '#FF5722',
+    },
+    answer: 'T',
+  },
+];
+
 export function registerForGame(gameId, userId) {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve();
+      resolve({ questions: QUESTIONS });
     }, 1000);
   });
 
