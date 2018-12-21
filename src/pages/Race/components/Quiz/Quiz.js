@@ -75,6 +75,7 @@ function Quiz(props) {
           totalQuestions={totalQuestions}
         />
         <AnswerInput
+          disabled={disable}
           question={question}
           onCorrect={handleCorrectSubmission}
           onIncorrect={handleIncorrectSubmission}
