@@ -1,4 +1,5 @@
 import axios from 'axios';
+import update from 'immutability-helper';
 
 const QUESTIONS = [
   {
@@ -106,44 +107,26 @@ export function registerForGame(gameId, userId) {
   });
 }
 
-const PARTICIPANTS = [
-  {
-    name: 'Vishwa',
-  },
-  {
-    name: 'Chicho',
-  },
-  {
-    name: 'Shree',
-  },
-  {
-    name: 'Anishetty',
-  },
-  {
-    name: 'Surabhi',
-  },
-  {
-    name: 'GK Soni',
-  },
-  {
-    name: 'Aneree',
-  },
-  {
-    name: 'Karan Vyas',
-  },
-  {
-    name: 'Archit',
-  },
-  {
-    name: 'Dhruv',
-  },
+const NAMES = [
+  'Vishwa',
+  'Chicho',
+  'Shree',
+  'Anishetty',
+  'Surabhi',
+  'GK Soni',
+  'Aneree',
+  'Karan Vyas',
+  'Archit',
+  'Dhruv',
 ];
 
+const PARTICIPANTS = NAMES.map(name => ({ name, score: 0 }));
+
 let gameParticipants = [];
-const MAX_GAME_PARTICIPANTS = 10;
+const MAX_GAME_PARTICIPANTS = PARTICIPANTS.length;
 const MAX_ADDITION_AT_A_TIME = 3;
 
-export function getGameReadyStatus(gameId) {
+export function fetchGameReadyStatus(gameId) {
   return new Promise(resolve => {
     const participantsToAdd = Math.ceil(Math.random() * MAX_ADDITION_AT_A_TIME);
     const start = Math.max(gameParticipants.length, 0);
@@ -163,5 +146,25 @@ export function getGameReadyStatus(gameId) {
       gameParticipants: [...gameParticipants],
       ready: false,
     });
+  });
+}
+
+let gameLeaderBoard = PARTICIPANTS;
+
+export function fetchGameLeaderBoard() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const winnerIndex = Math.floor(Math.random() * MAX_GAME_PARTICIPANTS);
+      gameLeaderBoard = update(gameLeaderBoard, {
+        [winnerIndex]: {
+          score: {
+            $apply(score) {
+              return score + 10;
+            }
+          },
+        }
+      });
+      resolve(gameLeaderBoard);
+    }, 400);
   });
 }

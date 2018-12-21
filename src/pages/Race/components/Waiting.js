@@ -2,12 +2,12 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {getGameReadyStatus} from '../../../services';
+import {fetchGameReadyStatus} from '../../../services';
 
 function Waiting(props) {
   useEffect(() => {
     const readinessInterval = setInterval(() => {
-      getGameReadyStatus().then(({ gameParticipants, ready }) => {
+      fetchGameReadyStatus().then(({ gameParticipants, ready }) => {
         props.onParticipantsUpdate(gameParticipants);
         if (ready) {
           clearInterval(readinessInterval);

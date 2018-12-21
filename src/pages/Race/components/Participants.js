@@ -14,8 +14,6 @@ const styles = theme => ({
   root: {
     width: 360,
     transition: 'all .2s',
-  },
-  item: {
     backgroundColor: theme.palette.background.paper,
   },
 });
@@ -23,8 +21,9 @@ const styles = theme => ({
 function Participants(props) {
   const { classes } = props;
 
+  let size = props.participants.length;
   return (
-    <List dense className={cx(classes.root, props.className)} style={{ height: (props.participants.length * 56) + 8 }}>
+    <List dense className={cx(classes.root, props.className)} style={{ height: (size * 56) + (size ? 8 : 0) }}>
       {props.participants.map(({ name, imgUrl }) => (
         <ListItem key={name} className={classes.item}>
           <ListItemAvatar>
