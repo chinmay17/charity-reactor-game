@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const QUESTIONS = [
   {
+    id: '1',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'black',
@@ -10,6 +11,7 @@ const QUESTIONS = [
     answer: 'F',
   },
   {
+    id: '2',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'red',
@@ -18,6 +20,7 @@ const QUESTIONS = [
     answer: 'T',
   },
   {
+    id: '3',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'blue',
@@ -26,6 +29,7 @@ const QUESTIONS = [
     answer: 'F',
   },
   {
+    id: '4',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'maroon',
@@ -34,6 +38,7 @@ const QUESTIONS = [
     answer: 'F',
   },
   {
+    id: '5',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'pink',
@@ -42,6 +47,7 @@ const QUESTIONS = [
     answer: 'T',
   },
   {
+    id: '6',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'purple',
@@ -50,6 +56,7 @@ const QUESTIONS = [
     answer: 'T',
   },
   {
+    id: '7',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'teal',
@@ -58,6 +65,7 @@ const QUESTIONS = [
     answer: 'T',
   },
   {
+    id: '8',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'green',
@@ -66,6 +74,7 @@ const QUESTIONS = [
     answer: 'F',
   },
   {
+    id: '9',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'brown',
@@ -74,6 +83,7 @@ const QUESTIONS = [
     answer: 'T',
   },
   {
+    id: '10',
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'orange',

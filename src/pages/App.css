@@ -1,28 +1,34 @@
-#root{
+#root {
     height: 100vh;
     width: 100vw;
+    background-color: #e9f0fd;
 }
 
-.full-height{
+.full-height {
     height: 100%;
 }
 
-.pos-r{
+.pos-r {
     position: relative;
 }
 
-.loginButton {
-    position: absolute;
-    left: 50%;
-    right: 50%;
-    transform: translate3d(-50%, -50%, 0);
-}
-
-.invisible{
+.invisible {
     opacity: 0;
 }
 
-.center-x{
+.center-x {
     display: flex;
     justify-content: center;
+}
+
+.flex-row-container {
+    display: flex;
+}
+
+.flex-item-1 {
+    flex: 1;
+}
+
+.flex-item-auto {
+    flex: 0 0 auto;
 }

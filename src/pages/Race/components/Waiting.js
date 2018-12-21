@@ -18,8 +18,8 @@ function Waiting(props) {
   }, []);
 
   return (
-    <div>
-      <Typography variant="subtitle1" gutterBottom>
+    <div className={props.className}>
+      <Typography variant="h4" gutterBottom>
         Please wait while we gather other enthusiasts
       </Typography>
       <div className="center-x">

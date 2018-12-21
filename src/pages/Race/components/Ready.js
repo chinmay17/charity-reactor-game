@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography/Typography';
 
 function Ready(props) {
-  const [countDown, updateCountDown] = useState(5);
+  const [countDown, updateCountDown] = useState(10);
   let timer;
   useEffect(() => {
     timer = setInterval(() => {
@@ -19,8 +19,8 @@ function Ready(props) {
   }
 
   return (
-    <div>
-      <Typography variant="subtitle1" gutterBottom>
+    <div className={props.className}>
+      <Typography variant="h4" gutterBottom>
         <span>Starting the game in </span>
         <span>{countDown}...</span>
       </Typography>

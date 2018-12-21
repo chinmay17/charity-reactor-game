@@ -13,8 +13,10 @@ import {withStyles} from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     width: 360,
-    backgroundColor: theme.palette.background.paper,
     transition: 'all .2s',
+  },
+  item: {
+    backgroundColor: theme.palette.background.paper,
   },
 });
 
@@ -22,9 +24,9 @@ function Participants(props) {
   const { classes } = props;
 
   return (
-    <List dense className={cx(classes.root, props.className)}>
+    <List dense className={cx(classes.root, props.className)} style={{ height: (props.participants.length * 56) + 8 }}>
       {props.participants.map(({ name, imgUrl }) => (
-        <ListItem key={name}>
+        <ListItem key={name} className={classes.item}>
           <ListItemAvatar>
             <Avatar
               alt={`Avatar n°${name}`}

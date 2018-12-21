@@ -3,17 +3,24 @@ import PropTypes from 'prop-types';
 import {QUESTION_TYPES} from '../../../../constants';
 
 import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
 
 function AnswerInput(props) {
   return (
     <div>
-      <Button variant="contained" color="primary"
-        onClick={() => props.question.answer === 'T' ? props.onCorrect(props.question.id) : props.onIncorrect(props.question.id)}>
-        True(T)
-      </Button>
-      <Button variant="contained" color="secondary"
+      <Button className={props.classes.button} variant="outlined" color="secondary"
         onClick={() => props.question.answer === 'F' ? props.onCorrect(props.question.id) : props.onIncorrect(props.question.id)}>
         False(T)
+      </Button>
+      <Button className={props.classes.button} variant="outlined" color="primary"
+        onClick={() => props.question.answer === 'T' ? props.onCorrect(props.question.id) : props.onIncorrect(props.question.id)}>
+        True(T)
       </Button>
     </div>
   );
@@ -32,4 +39,5 @@ AnswerInput.propTypes = {
 };
 AnswerInput.defaultProps = {};
 
-export default AnswerInput;
+export default withStyles(styles)(AnswerInput);
+

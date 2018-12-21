@@ -25,7 +25,7 @@ function Quiz(props) {
   const question = props.gameResponse.questions[currentIndex];
 
   return (
-    <div>
+    <div className={props.className}>
       <Question
         type={question.type}
         data={question.data}

@@ -42,9 +42,7 @@ const styles = theme => ({
     bottom: 0,
   },
   participantsBar: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
+    marginRight: theme.spacing.unit,
   },
   component: {
     textAlign: 'center',
@@ -84,7 +82,7 @@ class Race extends PureComponent {
   };
 
   initNextState = () => {
-    if (this.state.currentState.value === RACE_STATES.READY.value) {
+    if (this.state.currentState.value === RACE_STATES.IN_PROGRESS.value) {
       this.initializeProgressBar();
     } else if (this.state.currentState.value === RACE_STATES.DONE.value) {
       this.stopProgressBar();
@@ -109,19 +107,24 @@ class Race extends PureComponent {
     const Component = RACE_STATE_TO_COMPONENT[this.state.currentState.value];
     return (
       <div className={cx(props.className, props.classes.container)}>
-        {this.state.showTimerProgressBar && <LinearProgress className={props.classes.progressBar} variant="determinate" value={this.state.timeElapsed}/> }
+        {this.state.showTimerProgressBar &&
+        <LinearProgress className={props.classes.progressBar} variant="determinate" value={this.state.timeElapsed}/>}
         <div className="pos-r full-height">
-          <div className={cx(this.props.classes.component, 'center-x')}>
-            <Component
-              gameResponse={props.gameResponse}
-              onCompletion={this.handleCurrentStateCompletion}
-              onParticipantsUpdate={this.handleParticipantsUpdate}
+          <div className={cx('flex-row-container')}>
+            <Participants
+              className={cx('flex-item-auto', this.props.classes.participantsBar)}
+              participants={this.state.participants}
             />
+            <div className="flex-item-1 center-x">
+              <Component
+                className={this.props.classes.component}
+                gameResponse={props.gameResponse}
+                onCompletion={this.handleCurrentStateCompletion}
+                onParticipantsUpdate={this.handleParticipantsUpdate}
+              />
+            </div>
             {this.renderAnswerInput()}
           </div>
-          <Participants
-            className={this.props.classes.participantsBar}
-            participants={this.state.participants}/>
           <Footer/>
         </div>
       </div>

@@ -116,7 +116,7 @@ class LandingPage extends React.PureComponent {
           Entry fee ₹100 per game
         </Typography>
         <Typography variant="subtitle1" gutterBottom>
-          Prize money ₹500 per win
+          Prize money ₹500 per game
         </Typography>
         {this.state.errorMessage && <Typography className={classes.errorMessage} variant="h6" gutterBottom>
           {this.state.errorMessage}
