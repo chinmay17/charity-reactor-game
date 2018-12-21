@@ -1,1 +1,3 @@
-export default from './AnswerInput.class';
+import AnswerInputClass from './AnswerInput.class';
+
+export default AnswerInputClass;
