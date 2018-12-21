@@ -1,11 +1,21 @@
 #root {
     height: 100vh;
     width: 100vw;
-    background-color: #e9f0fd;
+    background-color: #fff;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
 .full-height {
     height: 100%;
+}
+
+.full-width {
+    width: 100%;
 }
 
 .pos-r {
@@ -19,6 +29,12 @@
 .center-x {
     display: flex;
     justify-content: center;
+}
+
+.center-x-y {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flex-row-container {

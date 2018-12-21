@@ -12,6 +12,7 @@ import {withStyles} from '@material-ui/core/styles';
 const styles = () => ({
   root: {
     userSelect: 'none',
+    maxWidth: 400,
   },
 });
 

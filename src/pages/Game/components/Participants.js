@@ -16,8 +16,11 @@ const styles = theme => ({
   root: {
     width: 360,
     transition: 'all .2s',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.primary.main,
   },
+  item: {
+    color: theme.palette.primary.contrastText,
+  }
 });
 
 function Participants(props) {
@@ -34,8 +37,8 @@ function Participants(props) {
               src={imgUrl}
             />
           </ListItemAvatar>
-          <ListItemText primary={name}/>
-          <Typography variant="h6">
+          <ListItemText primary={name} primaryTypographyProps={{ color: 'textSecondary' }}/>
+          <Typography variant="h6" color="textSecondary">
             {score}
           </Typography>
         </ListItem>

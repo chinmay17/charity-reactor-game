@@ -10,7 +10,6 @@ import Quiz from './components/Quiz';
 import Results from './components/Results';
 
 import Participants from './components/Participants';
-import Footer from './components/Footer';
 
 import {withStyles} from '@material-ui/core/styles';
 
@@ -62,7 +61,7 @@ class Game extends PureComponent {
   state = {
     currentState: RACE_STATES.WAITING,
     participants: [],
-    timeElapsed: STEP_SIZE, //zero to 100
+    timeElapsed: 100 - STEP_SIZE, //zero to 100
     showTimerProgressBar: false,
   };
 
@@ -70,17 +69,17 @@ class Game extends PureComponent {
     this.setState({ showTimerProgressBar: true });
     this.timer = setInterval(() => {
       const { timeElapsed } = this.state;
-      if (timeElapsed === 100) {
-        this.setState({ timeElapsed: STEP_SIZE });
+      if (timeElapsed === 0) {
+        this.setState({ timeElapsed: 100 - STEP_SIZE });
       } else {
-        this.setState({ timeElapsed: this.state.timeElapsed + STEP_SIZE });
+        this.setState({ timeElapsed: this.state.timeElapsed - STEP_SIZE });
       }
     }, REFRESH_TIME);
   };
 
   stopProgressBar = () => {
     clearInterval(this.timer);
-    this.setState({ timeElapsed: 100 });
+    this.setState({ timeElapsed: 0 });
   };
 
   initNextState = () => {
@@ -124,7 +123,6 @@ class Game extends PureComponent {
               />
             </div>
           </div>
-          <Footer/>
         </div>
       </div>
     );

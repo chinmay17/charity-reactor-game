@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography/Typography';
 
 function Ready(props) {
-  const [countDown, updateCountDown] = useState(10);
+  const [countDown, updateCountDown] = useState(5);
   let timer;
   useEffect(() => {
     timer = setInterval(() => {

@@ -1,7 +1,5 @@
 import React from 'react';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import red from '@material-ui/core/colors/red';
-import green from '@material-ui/core/colors/green';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 // A theme with custom primary and secondary color.
@@ -9,14 +7,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: red[300],
-      main: red[500],
-      dark: red[700],
+      light: '#5b5b5b',
+      main: '#333333',
+      dark: '#232323',
     },
-    secondary: {
-      light: green[300],
-      main: green[500],
-      dark: green[700],
+    text: {
+      secondary: '#fff'
     },
   },
   typography: {
@@ -31,7 +27,7 @@ function withRoot(Component) {
     return (
       <MuiThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
+        <CssBaseline/>
         <Component {...props} />
       </MuiThemeProvider>
     );

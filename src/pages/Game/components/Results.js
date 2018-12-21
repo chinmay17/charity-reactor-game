@@ -13,7 +13,7 @@ function Results(props) {
     fetchResults().then(({ tiedUsers, winner }) => {
       setLoading(false);
       if (tiedUsers) {
-        setTiedMessage(`The score was tied between ${tiedUsers.join(',')}`);
+        setTiedMessage(`The score was tied between ${tiedUsers.map(user => user.name).join(',')}`);
         setWinnerMessage(`Based on the cumulative reaction time, the winner is ${winner.name}!!`);
       } else {
         setWinnerMessage(`Congratulations ${winner.name}!!`);

@@ -13,7 +13,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 
 import {withStyles} from '@material-ui/core/styles';
 
-
 import {isEmailIdValid} from '../helper';
 
 import {registerForGame} from '../services';
@@ -21,7 +20,19 @@ import {registerForGame} from '../services';
 const styles = theme => ({
   root: {
     textAlign: 'center',
-    paddingTop: theme.spacing.unit * 20,
+  },
+  logo: {
+    marginBottom: 24,
+  },
+  infoBlockContainer: {
+    marginBottom: 60,
+  },
+  infoBlock: {
+    backgroundColor: '#f7f8fd',
+    padding: theme.spacing.unit,
+  },
+  infoBlock1: {
+    marginRight: theme.spacing.unit,
   },
   errorMessage: {
     color: theme.palette.error.dark,
@@ -90,7 +101,7 @@ class LandingPage extends React.PureComponent {
       <Dialog open={this.state.dialogOpen} onClose={this.handleClose}>
         <DialogTitle>Spr Xmas Games TnC</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText color="textPrimary">
             By entering you promise to pay ₹100 to Sprinklr Gurgaon
           </DialogContentText>
         </DialogContent>
@@ -107,31 +118,46 @@ class LandingPage extends React.PureComponent {
     const { classes } = this.props;
 
     return (
-      <div className={cx(classes.root, this.props.className)}>
+      <div className={cx('center-x-y', this.props.className, classes.root)}>
         {this.renderTermsAndConditions()}
-        <Typography variant="h4" gutterBottom>
-          10 Player Reactor for X'mas@Sprinklr!
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          Entry fee ₹100 per game
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          Prize money ₹500 per game
-        </Typography>
-        {this.state.errorMessage && <Typography className={classes.errorMessage} variant="h6" gutterBottom>
-          {this.state.errorMessage}
-        </Typography>}
-        {!this.state.isLoggedIn && <div className="center-x">
-          <div
-            className={cx('g-signin2', { invisible: this.state.hideLoginButton })}
-            data-onsuccess="onSignIn"
-            data-theme="dark"
-          >
+        <div>
+          <Typography className={cx(classes.logo)} variant="h4" gutterBottom>
+            🎅
+          </Typography>
+          <Typography variant="h4" gutterBottom>
+            Fastest Finger First
+          </Typography>
+          <Typography variant="subtitle1" gutterBottom>
+            10 competitors * 10 Questions * Quickest One Wins
+          </Typography>
+          <div className={cx('center-x', classes.infoBlockContainer)}>
+            <div className={cx(classes.infoBlock, classes.infoBlock1, 'flex-item-1')}>
+              <Typography variant="subtitle2">
+                💵 Entry Fees ₹100
+              </Typography>
+            </div>
+            <div className={cx(classes.infoBlock, 'flex-item-1')}>
+              <Typography variant="subtitle2">
+                🏆 Prize money ₹500
+              </Typography>
+            </div>
           </div>
-        </div>}
-        {this.state.isLoggedIn && <Button variant="contained" color="secondary" onClick={this.handleClick}>
-          Enter Game
-        </Button>}
+          {this.state.errorMessage && <Typography className={classes.errorMessage} variant="h6" gutterBottom>
+            {this.state.errorMessage}
+          </Typography>}
+          {!this.state.isLoggedIn && <div className="center-x">
+            <div
+              className={cx('g-signin2', { invisible: this.state.hideLoginButton })}
+              data-onsuccess="onSignIn"
+              data-theme="dark"
+            >
+            </div>
+          </div>}
+          {this.state.isLoggedIn &&
+          <Button className="full-width" variant="contained" color="primary" onClick={this.handleClick}>
+            Enter Game
+          </Button>}
+        </div>
       </div>
     );
   }

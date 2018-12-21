@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import {withStyles} from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography/Typography';
 
 const styles = theme => ({
   button: {
@@ -90,7 +91,6 @@ class AnswerInput extends PureComponent {
   renderSnackbar() {
     return ReactDOM.createPortal(
       <Snackbar
-        anchorOrigin={SNACKBAR_ORIGIN}
         autoHideDuration={2000}
         open={this.state.openSnackbar}
         onClose={this.handleSnackbarClose}
@@ -106,19 +106,27 @@ class AnswerInput extends PureComponent {
   render() {
     const { props } = this;
     return (
-      <div>
-        <Button
-          innerRef={this.falseButton}
-          className={props.classes.button} variant="outlined" color="secondary"
-          onClick={this.handleFalseButtonSubmit}>
-          False(F)
-        </Button>
-        <Button
-          innerRef={this.trueButton}
-          className={props.classes.button} variant="outlined" color="primary"
-          onClick={this.handleTrueButtonSubmit}>
-          True(T)
-        </Button>
+      <div className="center-x">
+        <div>
+          <Button
+            className={props.classes.button} variant="outlined" color="secondary"
+            onClick={this.handleFalseButtonSubmit}>
+            False
+          </Button>
+          <Typography variant="overline">
+            Press `F`
+          </Typography>
+        </div>
+        <div>
+          <Button
+            className={props.classes.button} variant="outlined" color="primary"
+            onClick={this.handleTrueButtonSubmit}>
+            True
+          </Button>
+          <Typography variant="overline">
+            Press `T`
+          </Typography>
+        </div>
         {this.renderSnackbar()}
       </div>
     );

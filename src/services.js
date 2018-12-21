@@ -97,7 +97,7 @@ const QUESTIONS = [
 export function registerForGame(gameId, userId) {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve({ questions: QUESTIONS });
+      resolve({ questions: QUESTIONS.slice(5) });
     }, 1000);
   });
 
