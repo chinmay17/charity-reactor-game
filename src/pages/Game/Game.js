@@ -7,6 +7,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Waiting from './components/Waiting';
 import Ready from './components/Ready';
 import Quiz from './components/Quiz';
+import Results from './components/Results';
 
 import Participants from './components/Participants';
 import Footer from './components/Footer';
@@ -24,6 +25,7 @@ const RACE_STATE_TO_COMPONENT = {
   [RACE_STATES.WAITING.value]: Waiting,
   [RACE_STATES.READY.value]: Ready,
   [RACE_STATES.IN_PROGRESS.value]: Quiz,
+  [RACE_STATES.DONE.value]: Results,
 };
 
 const styles = theme => ({
@@ -55,7 +57,7 @@ const REFRESH_TIME = 500;
 const PROGRESS_MAX = 100;
 const STEP_SIZE = (PROGRESS_MAX / TIME_FOR_EACH_PAGE) * REFRESH_TIME;
 
-class Race extends PureComponent {
+class Game extends PureComponent {
 
   state = {
     currentState: RACE_STATES.WAITING,
@@ -99,9 +101,6 @@ class Race extends PureComponent {
     this.setState({ participants });
   };
 
-  renderAnswerInput() {
-  }
-
   render() {
     const { props } = this;
     const Component = RACE_STATE_TO_COMPONENT[this.state.currentState.value];
@@ -117,13 +116,13 @@ class Race extends PureComponent {
             />
             <div className="flex-item-1 center-x">
               <Component
+                participants={this.state.participants}
                 className={this.props.classes.component}
                 gameResponse={props.gameResponse}
                 onCompletion={this.handleCurrentStateCompletion}
                 onParticipantsUpdate={this.handleParticipantsUpdate}
               />
             </div>
-            {this.renderAnswerInput()}
           </div>
           <Footer/>
         </div>
@@ -132,10 +131,10 @@ class Race extends PureComponent {
   }
 }
 
-Race.displayName = 'Race';
-Race.propTypes = {
+Game.displayName = 'Race';
+Game.propTypes = {
   gameResponse: PropTypes.any,
 };
-Race.defaultProps = {};
+Game.defaultProps = {};
 
-export default withStyles(styles)(Race);
+export default withStyles(styles)(Game);

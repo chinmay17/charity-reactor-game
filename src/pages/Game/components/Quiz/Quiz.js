@@ -59,12 +59,13 @@ function Quiz(props) {
 
   let totalQuestions = props.gameResponse.questions.length;
   if (currentIndex >= totalQuestions) {
+    clearInterval(timer);
     props.onCompletion();
   }
 
   const question = props.gameResponse.questions[currentIndex];
 
-  return (
+  return question ? (
     <div className={cx(props.className, { [props.classes.disabledContainer]: disable })}>
       <div className={cx({ [props.classes.disabled]: disable })}>
         <Question
@@ -82,7 +83,7 @@ function Quiz(props) {
         />
       </div>
     </div>
-  );
+  ) : null;
 }
 
 Quiz.displayName = 'Quiz';

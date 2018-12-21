@@ -130,7 +130,7 @@ class LandingPage extends React.PureComponent {
           </div>
         </div>}
         {this.state.isLoggedIn && <Button variant="contained" color="secondary" onClick={this.handleClick}>
-          Enter Race
+          Enter Game
         </Button>}
       </div>
     );

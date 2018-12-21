@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import LandingPage from './LandingPage';
-import Race from './Race';
+import Game from './Game';
 import withRoot from '../withRoot';
 
 import './App.css';
@@ -25,7 +25,7 @@ class Index extends React.PureComponent {
 
     return (
       this.state.shouldRenderRace ?
-        <Race gameResponse={this.state.gameResponse} className={className}/> :
+        <Game gameResponse={this.state.gameResponse} className={className}/> :
         <LandingPage className={className} onSubmit={this.handleLandingPageSubmit}/>
     );
   }

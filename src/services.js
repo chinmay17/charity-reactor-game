@@ -34,7 +34,7 @@ const QUESTIONS = [
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'maroon',
-      textColor: '#BBDEFB',
+      textColor: '#000',
     },
     answer: 'F',
   },
@@ -70,7 +70,7 @@ const QUESTIONS = [
     type: 'COLOR_TO_COLOR_NAME',
     data: {
       text: 'green',
-      textColor: '#9E9E9E',
+      textColor: '#00AAFF',
     },
     answer: 'F',
   },
@@ -164,7 +164,25 @@ export function fetchGameLeaderBoard() {
           },
         }
       });
-      resolve(gameLeaderBoard);
+      resolve(gameLeaderBoard.sort((p1, p2) => p1.score > p2.score ? -1 : 1));
     }, 400);
+  });
+}
+
+export function fetchResults(gameId) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const scoreSortedPlayers = gameLeaderBoard.sort((p1, p2) => p1.score > p2.score ? -1 : 1);
+      const topScore = scoreSortedPlayers[0].score;
+      const tieBetween = scoreSortedPlayers.filter(player => player.score === topScore);
+      const response = {};
+      if (tieBetween.length > 1) {
+        response.tiedUsers = tieBetween;
+        response.winner = tieBetween[Math.floor(Math.random() * (tieBetween.length - 1))]
+      } else {
+        response.winner = tieBetween[0];
+      }
+      resolve(response);
+    }, 1000);
   });
 }
