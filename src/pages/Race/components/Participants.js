@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+import Typography from '@material-ui/core/Typography';
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -24,8 +26,8 @@ function Participants(props) {
   let size = props.participants.length;
   return (
     <List dense className={cx(classes.root, props.className)} style={{ height: (size * 56) + (size ? 8 : 0) }}>
-      {props.participants.map(({ name, imgUrl }) => (
-        <ListItem key={name} className={classes.item}>
+      {props.participants.map(({ name, emailId, imgUrl, score }) => (
+        <ListItem key={name} className={classes.item} selected={emailId === window.__ENV__.emailId}>
           <ListItemAvatar>
             <Avatar
               alt={`Avatar n°${name}`}
@@ -33,6 +35,9 @@ function Participants(props) {
             />
           </ListItemAvatar>
           <ListItemText primary={name}/>
+          <Typography variant="h6">
+            {score}
+          </Typography>
         </ListItem>
       ))}
     </List>
